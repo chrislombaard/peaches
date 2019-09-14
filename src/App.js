@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Gallery from './components/Gallery';
+import { ThemeProvider } from './components/ThemeProvider';
+import { Box } from 'rebass';
+import baseTheme from './theme';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        theme: 'light'
+    };
+
+    handleThemeChange = () => {
+        const { theme } = this.state;
+        this.setState({ theme: theme === 'light' ? 'dark' : 'light' });
+    };
+
+    render() {
+        const { theme } = this.state;
+        return (
+            <ThemeProvider theme={baseTheme[theme]}>
+                <Box mx={5} my={3}>
+                    <Gallery
+                        themeChange={this.handleThemeChange}
+                        themeName={theme}
+                    />
+                </Box>
+            </ThemeProvider>
+        );
+    }
 }
 
 export default App;

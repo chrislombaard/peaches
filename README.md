@@ -1,2 +1,9 @@
-# peaches
-View and manipulate your images in a sweet sweet gallery. 🍑
+Installing
+============================================================
+
+.. code-block:: sh
+
+    $ yarn
+    $ yarn start
+
+You can now navigate to `0.0.0.0:3000` to view the site!
